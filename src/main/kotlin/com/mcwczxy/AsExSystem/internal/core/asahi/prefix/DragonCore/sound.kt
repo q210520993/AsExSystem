@@ -2,6 +2,7 @@ package com.mcwczxy.AsExSystem.internal.core.asahi.prefix.DragonCore
 
 import com.skillw.asahi.api.annotation.AsahiPrefix
 import com.skillw.asahi.api.prefixParser
+import com.skillw.asahi.api.quest
 import com.skillw.asahi.api.quester
 import eos.moe.dragoncore.network.PacketSender
 import org.bukkit.entity.Player
@@ -32,5 +33,16 @@ private fun testMagic() = prefixParser {
             y.get() as Float,
             z.get() as Float
             )
+    }
+}
+@AsahiPrefix(["DsoundStop"], "DragonCore")
+private fun test() = prefixParser {
+    val quest = quest<Player>()
+    val quest2 = questString()
+    result {
+        PacketSender.sendStopSound(
+            quest.get(),
+            quest2.get()
+        )
     }
 }
